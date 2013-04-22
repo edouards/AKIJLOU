@@ -1,0 +1,26 @@
+.container{
+	margin-top: 10%;
+	border: 1px solid #dd0000;
+	border-radius: 3px 3px 3px 3px;
+}
+
+.brand ,.brand:hover{
+	color:#dd0000;
+	text-decoration: none;
+	text-align: center;
+}
+
+.accordion-toggle{
+	text-decoration:none;
+	text-align: center; 
+	color:black;
+}
+.accordion-toggle:hover{
+	text-decoration:none;
+	color:#dd0000;
+}
+
+footer{
+	text-align: center;
+	background-color: #dd0000;
+}
