@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
-		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="style.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="style.css" rel="stylesheet"/>
 
 		<title>AKIJLOU</title>
 	</head>
@@ -12,7 +12,7 @@
 			<div class="navbar-inner">
 				<a class="brand" href="index.php"><h1>AKIJLOU</h1></a>
 			</div>
-			<article>
+			<article id="menu">
 
 				<div class="accordion" id="accordion3">
 					<div class="accordion-group">
@@ -53,16 +53,16 @@
 				    </div>
 				    <div id="collapseThree" class="accordion-body collapse">
 				      <div class="accordion-inner">
-				        <?php
-				        	include("signupForm.php");
+				        <?php 
+				        include("signupForm.php");
 				        ?>
 				      </div>
 				    </div>
 				  </div>
 				</div>
 			</article>
-			<footer>
-				<p style="text-align:center;color:white;">Projet scolaire à but non lucratif, libre de droit.</p>
+			<footer style="text-align:center;color:white;">
+				Projet scolaire à but non lucratif, libre de droit.
 			</footer>
 		</div>
 

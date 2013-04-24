@@ -7,9 +7,7 @@
 
 	try
 	{
-		$connect = new
-		PDO('mysql:host='.$PARAM_hote.';dbname='.$PARAM_nom_bd,
-		$PARAM_utilisateur,$PARAM_mot_passe,array(PDO::ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION));
+		$connect = new PDO('mysql:host='.$PARAM_hote.';dbname='.$PARAM_nom_bd, $PARAM_utilisateur,$PARAM_mot_passe,array(PDO::ATTR_ERRMODE=> PDO::ERRMODE_EXCEPTION));
 	}
 	catch(Exception $e)
 	{

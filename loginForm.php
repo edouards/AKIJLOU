@@ -1,10 +1,10 @@
 <!--Formulaire de connection des utilisateurs-->
 
-<form id="login" method="post" class="form-inline">
+<form id="login" method="POST" class="form-inline" action="espaceUser.php">
 	<fieldset>
 		<legend>Formulaire de connection</legend>
-		<input id="log" type="text" placeholder="login..."/>
-		<input id="pwd" type="password" placeholder="mot de passe..."/>
+		<input id="log" name="log" type="text" placeholder="login..."/>
+		<input id="pass" name="pass" type="password" placeholder="mot de passe..."/>
 		<button type="submit" class="btn btn-success">Connection</button>
 	</fieldset>
 </form>
