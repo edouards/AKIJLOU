@@ -16,50 +16,68 @@
 		//Fonctions de vérifications
 		include("Verifs&Tests/ajouteBailleur.php");
 		include("Verifs&Tests/verifAuth.php");
-		//On récupère l'id dans une variable pour les futurs tests
-		if(AddUser()!=0){
-			$idBailleur=AddUser();
-		}else if(VerifUser()!=0){
-			$idBailleur=VerifUser();
+		include("Verifs&Tests/verifAppartAdd.php");
+		//On regarde si il s'agit d'une redirection après l'ajout d'un appartement
+		if(isset($_POST['ad1'])){
+			AddAppart($_SESSION['idBailleur']);
 		}else{
-			$idBailleur=0;
+			//On récupère l'id dans une variable pour les futurs tests
+			if(AddUser()!=0){
+				$_SESSION['idBailleur'] = AddUser();
+			}else if(VerifUser()!=0){
+				$_SESSION['idBailleur'] = VerifUser();
+			}
 		}
 		?>
 		<div class="container" style="height:100%;">
 			<div class="navbar-inner">
-				<a class="brand" href="index.php"><h1>AKIJLOU</h1></a>
+				<a class="brand" href="index.php"><h1>AKIJLOU<i class="icon-home"></i></h1></a>
+				<button class="btn btn-danger pull-right" id="deco">Déconnexion</button>
 			</div>
-			<nav>
 			
-			</nav>
-			<article id="espaceUser">
+			<div class="espaceUser span9">
 			<?php
-
-			if($idBailleur!=0){
+			if(isset($_SESSION['idBailleur'])){
 				//On récupère les données relatives à l'utilisateur
 				include('connect.php');
 				$query = $connect->prepare("SELECT * FROM appartement WHERE app_idBailleur=:idBailleur ORDER BY app_id;");
-				$query->bindParam(':idBailleur',$idBailleur);
+				$query->bindParam(':idBailleur',$_SESSION['idBailleur']);
 				$query->execute();
-				$appartement = $query->fetchObject();
-				
+				$appartement = $query->fetchAll(PDO::FETCH_OBJ);
 				//On regarde si la requête retourne une valeur
 				//Si oui on affiche le resultat
 				//Sinon on propose d'ajouter un appartement
-				if(isset($appartement->app_id)){
-					print_r($appartement);
+				if(isset($appartement[0]->app_id)){
+					include("viewAppart.php");
 				}else{
-					//include("Verifs&Tests/ajouteAppartement.php");
-					echo "formulaire d'ajout d'un appartement en développement";
+				?>
+					<div class="accordion" id="accordion">
+					  <div class="accordion-group">
+					    <div class="accordion-heading">
+					      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse">
+					        Vous n'avez pas d'appartement enregistré.
+					        <button class="btn btn-link"><i class="icon-plus"></i></button>
+					      </a>
+					    </div>
+					    <div id="collapse" class="accordion-body collapse">
+					      <div class="accordion-inner">
+					        <?php include("Verifs&Tests/ajouteAppartement.php");?>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				<?php
 				}
 			}else{
 				echo "erreur";
 			}
 			?>
-			</article>
-			<footer style="text-align:center;color:white;">
-				Projet scolaire à but non lucratif, libre de droit.
-			</footer>
+			</div>
 		</div>
+		<script src="jquery/jquery.js"></script>
+		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
+	<footer>
+		Projet scolaire à but non lucratif, libre de droit.
+	</footer>
 </html>

@@ -10,7 +10,7 @@
 	<body>
 		<div class="container" style="height:100%;">
 			<div class="navbar-inner">
-				<a class="brand" href="index.php"><h1>AKIJLOU</h1></a>
+				<a class="brand" href="index.php"><h1>AKIJLOU<i class="icon-home"></i></h1></a>
 			</div>
 			<article id="menu">
 
@@ -26,7 +26,7 @@
 				        <p>
 				        	AKIJLOU est un site web vous permettant de gérer vos locations d'appartement depuis n'importe quel terminal.
 				        	L'inscription est gratuite et se fait en un clic ! 
-				        	Que ce soit sur vôtre smartphone ou devant vôtre PC, vous saurez toujours à qui vous louez !
+				        	Que ce soit sur vôtre smartphone, tablette ou devant vôtre PC, vous saurez toujours à qui vous louez !
 				        </p>
 				      </div>
 				    </div>
@@ -61,12 +61,12 @@
 				  </div>
 				</div>
 			</article>
-			<footer style="text-align:center;color:white;">
-				Projet scolaire à but non lucratif, libre de droit.
-			</footer>
 		</div>
 
 		<script src="jquery/jquery.js"></script>
 		<script src="bootstrap/js/bootstrap.min.js"></script>
 	</body>
+	<footer>
+		Projet scolaire à but non lucratif, libre de droit.
+	</footer>
 </html>
