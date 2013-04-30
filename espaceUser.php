@@ -48,6 +48,7 @@
 				//Si oui on affiche le resultat
 				//Sinon on propose d'ajouter un appartement
 				if(isset($appartement[0]->app_id)){
+					include("Verifs&Tests/verifLocataireAdd.php");
 					include("viewAppart.php");
 				}else{
 				?>
@@ -67,6 +68,7 @@
 					  </div>
 					</div>
 				<?php
+				$query->closeCursor();
 				}
 			}else{
 				echo "erreur";

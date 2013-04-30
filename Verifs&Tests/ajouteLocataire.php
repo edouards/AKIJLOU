@@ -10,6 +10,8 @@
 			<form class="form-horizontal" method="POST" action="../espaceUser.php">
 				<legend style="text-align:center;">Formulaire d'ajout d'un locataire</legend>
 				<fieldset>
+					<!-- champ caché permettant de récupérer l'id de l'appartement -->
+					<input type="hidden" id ="appId" name="appId" value="<?php echo $_GET['appt'];?>"/>
 					<div class="control-group">
 						<label class="control-label" for="nomLoc">Nom</label>
 						<div class="controls">
@@ -41,14 +43,14 @@
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="situation">Situation</label>
+						<label class="control-label" for="situation">Situation du locataire</label>
 						<div class="controls">
-							<select id="situation">
-								<option>CDD</option>
-								<option>CDI</option>
-								<option>CHOMEUR</option>
-								<option>ETUDIANT</option>
-								<option>INDEPENDANT</option>
+							<select id="situation" name="situation">
+								<option value="CDD">CDD</option>
+								<option value="CDI">CDI</option>
+								<option value="CHOMEUR">CHOMEUR</option>
+								<option value="ETUDIANT">ETUDIANT</option>
+								<option value="INDEPENDANT">INDEPENDANT</option>
 							</select>
 						</div> 
 					</div>
