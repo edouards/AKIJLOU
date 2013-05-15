@@ -3,11 +3,12 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8"/>
 		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet"/>
+		<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
 		<link href="../style.css" rel="stylesheet"/>
 	</head>
 	<body>
-		<div class="container span6" style="margin-left:35%;">
-			<form class="form-horizontal" method="POST" action="../espaceUser.php">
+		<div class="container" style="width:40%;">
+			<form method="POST" action="../espaceUser.php">
 				<legend style="text-align:center;">Formulaire d'ajout d'un locataire</legend>
 				<fieldset>
 					<!-- champ caché permettant de récupérer l'id de l'appartement -->

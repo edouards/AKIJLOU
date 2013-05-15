@@ -9,19 +9,23 @@ function VerifUser(){
 	include("connect.php");
 	//On récupère l'id de l'utilisateur
 	//dans le tableau $bailId[0] sous forme d'objet
-	if(isset($_POST['log']) && isset($_POST['pass'])){
+	//Variable ou on stock le résultat
+	$resultatQuery="";
+	if(isset($_POST['logAuth']) && isset($_POST['passAuth'])){
 		$verif = $connect->prepare("SELECT bail_id FROM bailleur WHERE bail_login=:log AND bail_pwd=:pwd");
-		$verif->bindParam(':log',$_POST['log']);
-		$verif->bindParam(':pwd',crypt($_POST['pass'],$_POST['log']));
+		$verif->bindParam(':log',$_POST['logAuth']);
+		$verif->bindParam(':pwd',crypt($_POST['passAuth'],$_POST['logAuth']));
 		$verif->execute();
 		$bailId = $verif->fetchAll(PDO::FETCH_OBJ);
 		
 		//On vérifie qu'il y ai un résultat
 		if(isset($bailId[0]->bail_id)){
-			return $bailId[0]->bail_id;
+			$resultatQuery = $bailId[0]->bail_id;
+			$verif->closeCursor();
 		}else{
-			return 0;
+			$resultatQuery = 0;
 		}
+		return $resultatQuery;
 	}
 }
 ?>

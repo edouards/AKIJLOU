@@ -3,7 +3,9 @@ var adresse = document.getElementById('ad1');
 
 var cpAppart = document.getElementById('cpAppart');
 var villeAppart = document.getElementById('villeAppart');
-var caution = document.getElementById('caution');
+var loyer = document.getElementById('loyer');
+var superficie = document.getElementById('superficie');
+var nbPiece = document.getElementById('nbPiece');
 var validation = document.getElementById('validAppart');
 
 //Si l'adresse est supérieure à 5 caractères et non nulle
@@ -35,28 +37,63 @@ villeAppart.addEventListener('keyup',function(){
 	}
 },false);
 
-//Vérifie que la caution soit bien un nombre
-caution.addEventListener('blur',function(){
-	var cautionSplit = caution.value.split("");
+//Vérifie que la loyer soit bien un nombre
+loyer.addEventListener('blur',function(){
+	var loyerSplit = loyer.value.split("");
 
-	for(var i=0;i<cautionSplit.length;i++){
-		if(isNaN(cautionSplit[i]) || cautionSplit[i]==" "){
-			cautionSplit[i]=null;
+	for(var i=0;i<loyerSplit.length;i++){
+		if(isNaN(loyerSplit[i]) || loyerSplit[i]==" "){
+			loyerSplit[i]=null;
 		}
 	}
-	caution.value = cautionSplit.join("");
-	if(caution.value!=0){
-		caution.style.borderColor = 'green';
+	loyer.value = loyerSplit.join("");
+	if(loyer.value!=0){
+		loyer.style.borderColor = 'green';
 	}else{
-		caution.style.borderColor = 'red';
+		loyer.style.borderColor = 'red';
+	}
+},false);
+
+//Vérifie que la superficie soit supèrieure ou égale à la norme
+superficie.addEventListener('keyup',function(){
+	if(superficie.value>=9){
+		superficie.style.borderColor = "green";
+	}else{
+		superficie.style.borderColor = "red";
+	}
+},false);
+//Vérification de la superficie lorsqu'on la choisi avec les flèches
+superficie.addEventListener('change',function(){
+	if(superficie.value>=9){
+		superficie.style.borderColor = "green";
+	}else{
+		superficie.style.borderColor = "red";
+	}
+},false);
+
+//Vérification du nombre de pièces
+nbPiece.addEventListener('keyup',function(){
+	if(nbPiece.value>=1){
+		nbPiece.style.borderColor = "green";
+	}else{
+		nbPiece.style.borderColor = "red";
+	}
+},false);
+//Vérification du nombre de pièces lorsqu'on le choisi avec les flèches
+nbPiece.addEventListener('change',function(){
+	if(nbPiece.value>=1){
+		nbPiece.style.borderColor = "green";
+	}else{
+		nbPiece.style.borderColor = "red";
 	}
 },false);
 
 //Empêche la redirection si un des champs  vérifier n'est pas correct ou vide
 validation.addEventListener('click',function(e){
-	if(adresse.value=="" || cpAppart.value=="" || villeAppart.value=="" || caution.value==""){
-		if(adresse.value<5 || cpAppart!=5 || villeAppart.value<2){
+	if(adresse.value=="" || cpAppart.value=="" || villeAppart.value=="" || loyer.value==""){
+		if(adresse.value<5 || cpAppart!=5 || villeAppart.value<2 || superficie.value<9 || nbPiece.value<1){
 			e.preventDefault();
+			alert("Un champ n'a pas été rempli ou est incorrect.");
 		}
 		e.preventDefault();
 		alert("Un champ n'a pas été rempli ou est incorrect.");

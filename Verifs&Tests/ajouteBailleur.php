@@ -8,7 +8,7 @@ function AddUser(){
 	//Instance de connexion
 	include("connect.php");
 
-	if(isset($_POST['username']) && isset($_POST['passwd']) && strlen($_POST['passwd'])>8){
+	if(isset($_POST['username']) && isset($_POST['passwd']) && strlen($_POST['passwd'])>=8){
 		//On vérifie qu'il n'y ai pas déjà le même pseudo
 		$logExist = $connect->prepare("SELECT bail_login FROM bailleur");
 		$logExist->execute();

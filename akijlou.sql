@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mer 01 Mai 2013 à 11:36
+-- Généré le: Dim 05 Mai 2013 à 14:50
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -19,8 +19,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données: `akijlou`
 --
-CREATE DATABASE IF NOT EXISTS akijlou;
-USE akijlou; 
+USE edouardssakijlou;
 -- --------------------------------------------------------
 
 --
@@ -36,16 +35,12 @@ CREATE TABLE IF NOT EXISTS `appartement` (
   `app_loye` float NOT NULL,
   `app_idBailleur` int(11) NOT NULL,
   PRIMARY KEY (`app_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `appartement`
 --
 
-INSERT INTO `appartement` (`app_id`, `app_ad1`, `app_ad2`, `app_cp`, `app_ville`, `app_loye`, `app_idBailleur`) VALUES
-(24, '67 rue Mestre', 'RÃ©sidence Batany app 6', '33200', 'BORDEAUX', 494, 12),
-(25, '50 rue du loup', '', '33000', 'BORDEAUX', 400, 12),
-(26, '8 allÃ©e de la fontaine d''albion', '', '33370', 'SALLEBOEUF', 500, 20);
 
 -- --------------------------------------------------------
 
@@ -58,17 +53,11 @@ CREATE TABLE IF NOT EXISTS `bailleur` (
   `bail_pwd` varchar(15) NOT NULL,
   `bail_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`bail_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Contenu de la table `bailleur`
 --
-
-INSERT INTO `bailleur` (`bail_login`, `bail_pwd`, `bail_id`) VALUES
-('cynthia', 'cyRhfVxdX78Uk', 11),
-('edouard', 'edjtgzjPsbAw.', 12),
-('joel', 'jo66yMe1oOvWc', 14),
-('martine', 'maBfrusWRmQvs', 20);
 
 -- --------------------------------------------------------
 
@@ -80,8 +69,13 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
   `com_id` int(11) NOT NULL AUTO_INCREMENT,
   `com_content` varchar(150) NOT NULL,
   `com_objet` varchar(50) NOT NULL,
+  `com_idApp` int(11) NOT NULL,
   PRIMARY KEY (`com_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `commentaire`
+--
 
 -- --------------------------------------------------------
 
@@ -100,15 +94,11 @@ CREATE TABLE IF NOT EXISTS `locataire` (
   `loc_garant` varchar(200) DEFAULT NULL,
   `loc_idApp` int(11) NOT NULL,
   PRIMARY KEY (`loc_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `locataire`
 --
-
-INSERT INTO `locataire` (`loc_id`, `loc_nom`, `loc_prenom`, `loc_dateEntree`, `loc_dateDepart`, `loc_caution`, `loc_situation`, `loc_garant`, `loc_idApp`) VALUES
-(4, 'souan', 'edouard', '2011-07-19', NULL, 17000, 'ETUDIANT', 'Joel Souan', 24),
-(5, 'marcelon', 'martine', '2012-05-23', NULL, 300, 'CDI', 'Yvette Oggian', 25);
 
 -- --------------------------------------------------------
 
@@ -119,10 +109,14 @@ INSERT INTO `locataire` (`loc_id`, `loc_nom`, `loc_prenom`, `loc_dateEntree`, `l
 CREATE TABLE IF NOT EXISTS `photo` (
   `ph_id` int(11) NOT NULL AUTO_INCREMENT,
   `ph_nom` varchar(25) NOT NULL,
-  `ph_date` date NOT NULL,
   `ph_chemin` varchar(50) NOT NULL,
+  `ph_idApp` int(11) NOT NULL,
   PRIMARY KEY (`ph_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=30 ;
+
+--
+-- Contenu de la table `photo`
+--
 
 -- --------------------------------------------------------
 
@@ -133,10 +127,16 @@ CREATE TABLE IF NOT EXISTS `photo` (
 CREATE TABLE IF NOT EXISTS `travaux` (
   `tra_id` int(11) NOT NULL AUTO_INCREMENT,
   `tra_motif` varchar(50) NOT NULL,
-  `tra_date` date NOT NULL,
+  `tra_dateDeb` date NOT NULL,
+  `tra_dateFin` date NOT NULL,
   `tra_cout` float NOT NULL,
+  `tra_idApp` int(11) NOT NULL,
   PRIMARY KEY (`tra_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `travaux`
+--
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

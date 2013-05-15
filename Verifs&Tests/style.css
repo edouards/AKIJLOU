@@ -38,23 +38,9 @@ body{
 	background-color: white;
 }
 
-form{
-	width:50%;
-	margin:auto;
-}
-
 img{
 	width:28%;
 	height:11%;
-}
-
-.breadcrumb{
-	background-color: #b50000;
-	color:white;
-}
-
-.breadcrumb a{
-	color:white;
 }
 
 footer{
